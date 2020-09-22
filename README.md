@@ -82,6 +82,22 @@ Az ASP.NET Core Indentity nagyon jó beépíthető elem, a kockázati tényező 
 ## és még
 - docker container fejlesztési környezet
 - visual studio code
+ - Extensions - C#, C# Extensions, C# XML Documentation Comments
+
+
+ ## Kódstruktúra
+ Projektek:
+ - webdimension.Data   (dotnet new classlib)-template
+  Névterek:
+  - webdimension.Data
+  - webdimension.Repository
+  NuGet:
+  - dotnet add package Microsoft.EntityFrameworkCore --version 3.1.8
+
+ - webdimension.WebUI  (dotnet new mvc)-template
+  Névterek:
+  - webdimension.Service
+  - webdimension.WebUI
 
 
 
