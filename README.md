@@ -91,6 +91,9 @@ Az ASP.NET Core Indentity nagyon jó beépíthető elem, a kockázati tényező 
   Névterek:
   - webdimension.Data
   - webdimension.Repository
+
+  Adatbázis:
+  - webdimension.db / SQLite
   NuGet:
   - dotnet add package Microsoft.EntityFrameworkCore --version 3.1.8
 
@@ -98,6 +101,9 @@ Az ASP.NET Core Indentity nagyon jó beépíthető elem, a kockázati tényező 
   Névterek:
   - webdimension.Service
   - webdimension.WebUI
+
+  - webDimension.Data.Tests
+
 
 
 
