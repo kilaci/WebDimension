@@ -5,16 +5,32 @@ namespace webdimension.Data.Repository
 {
     public class TaskTypeRepository
     {
+        private readonly WebdimensionDbContext db;
+
+        public TaskTypeRepository()
+        {
+            var factory = new WebdemensionDbContextFactory();
+            db = factory.CreateDbContext(new string[] {});
+        }
+
+       
+
         public void Add(TaskType entity)   
         {
-            throw new NotImplementedException();
+            db.TaskTypes.Add(entity);
 
         }
 
 
-        public TaskType GetById(int ID)
+        public TaskType GetById(int Id)
         {
-            throw new NotImplementedException();
+            return db.TaskTypes.Find(Id);
+
+        }
+
+        public void Update(TaskType tasktype)
+        {
+
 
         }
 
