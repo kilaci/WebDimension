@@ -9,8 +9,11 @@ namespace webdimension.Data.Model
         public WebdimensionDbContext CreateDbContext(string[] args)
         {
             var builder = new DbContextOptionsBuilder<WebdimensionDbContext>();
+
+            //TODO: beállítás from appsetting
             builder.UseSqlite("Data Source=webdimension.db;");
             return new WebdimensionDbContext (builder.Options);
         }
     }
 }
+

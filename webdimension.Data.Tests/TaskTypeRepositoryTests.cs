@@ -29,12 +29,9 @@ namespace webdimension.Data.Tests
 
             // Assert - Kiértékelünk.
             Assert.NotNull(result);
-                //Antipattern
-                //Assert.Equal(tasktype, result);
             // nuget FluentAssertions
             result.Should().BeEquivalentTo(tasktype);
-
-            
+         
 
         }
     }
