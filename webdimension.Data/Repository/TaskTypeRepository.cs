@@ -10,16 +10,16 @@ namespace webdimension.Data.Repository
         public TaskTypeRepository()
         {
             //TODO: Antipattern
-            var factory = new WebdemensionDbContextFactory();
+            var factory = new WebdimensionDbContextFactory();
             db = factory.CreateDbContext(new string[] {});
         }
 
        
 
-        public void Add(TaskType entity)   
+        public void Add(TaskType tasktype)   
         {
             //TODO: Async
-            db.TaskTypes.Add(entity);
+            db.TaskTypes.Add(tasktype);
         }
 
 
@@ -32,9 +32,16 @@ namespace webdimension.Data.Repository
 
         public void Update(TaskType tasktype)
         {
-
+            //TODO: visszatérési érték?
+            db.TaskTypes.Update(tasktype);
+            
 
         }
 
+        public void Remove(TaskType tasktype)
+        {
+            //TODO: visszatérési érték?
+            db.TaskTypes.Remove(tasktype);
+        }
     }
 }
