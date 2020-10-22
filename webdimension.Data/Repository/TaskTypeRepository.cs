@@ -14,7 +14,11 @@ namespace webdimension.Data.Repository
             db = factory.CreateDbContext(new string[] {});
         }
 
-       
+        public TaskTypeRepository(WebdimensionDbContext db)
+        {
+            this.db = db 
+                ?? throw new ArgumentNullException(nameof(db));
+        }
 
         public void Add(TaskType tasktype)   
         {

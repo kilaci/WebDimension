@@ -10,18 +10,18 @@ namespace webdimension.Data.Tests
     /// 
     /// CRUD és list tesztek
     /// 
-    public class TaskTypeRepositoryTests
+    public class TaskTypeRepositoryTests : IClassFixture<DatabaseFixture>
     {
+        private readonly DatabaseFixture fixture;
 
-        public TaskTypeRepositoryTests()
+        public TaskTypeRepositoryTests(DatabaseFixture fixture)
         {
-            var factory = new WebdimensionDbContextFactory();
-            var db = factory.CreateDbContext(new string[] { });
-
-            db.Database.EnsureCreated();
+            this.fixture = fixture 
+                ?? throw new ArgumentNullException(nameof(fixture));
+            
         }
 
-        
+
         /// <summary>
         /// Create teszt
         /// </summary>
@@ -30,10 +30,10 @@ namespace webdimension.Data.Tests
         public void TaskTypeRepositoryTests_AddedTaskTypesShouldBeAppearInRepository()
         {
             // Arrange - előkészületek
-            
+
             // SUT: System Under Test
-            var sut = new TaskTypeRepository();
-            var tasktype = new TaskType { Id = 1, Name="Test Tasktype"};
+            var sut = new TaskTypeRepository(fixture.GetNewWebdimensionContext());
+            var tasktype = new TaskType { Id = 1, Name = "Test Tasktype" };
 
 
             // Act - tesztelünk
@@ -49,28 +49,53 @@ namespace webdimension.Data.Tests
 
 
         /// <summary>
-        /// Update test
+        /// Read test
         /// </summary>        
         [Fact]
         public void TaskTypeRepositoryTests_ExistingTaskTypesShouldBeAppearInRepository()
         {
             // Arrange - előkészületek
             // SUT: System Under Test
-            var sut = new TaskTypeRepository();
-            var tasktype = new TaskType { Id = 1, Name="Test Tasktype"};
+            var sut = new TaskTypeRepository(fixture.GetNewWebdimensionContext());
+            var tasktype = new TaskType { Id = 1, Name = "Test Tasktype" };
             sut.Add(tasktype);
             var toUPdate = sut.GetById(tasktype.Id);
 
             // Act
-            toUPdate.Name="Modositott Tasktype";
+            toUPdate.Name = "Modositott Tasktype";
             sut.Update(toUPdate);
 
             var afterupdate = sut.GetById(tasktype.Id);
 
             // Assert - Kiértékelünk.
             afterupdate.Should().BeEquivalentTo(toUPdate);
-             
         }
+
+
+        /// <summary>
+        /// Update test
+        /// </summary>        
+        [Fact]
+        public void TaskTypeRepositoryTests_ExistingTaskTypesShouldBeChange()
+        {
+            // Arrange - előkészületek
+            var sut = new TaskTypeRepository(fixture.GetNewWebdimensionContext());
+            var tasktype = new TaskType { Id = 1, Name = "Test Tasktype" };
+            sut.Add(tasktype);
+            
+            // Act
+            var toUPdate = sut.GetById(tasktype.Id);
+            toUPdate.Name = "Modositott Tasktype";
+            sut.Update(toUPdate);
+
+            var afterupdate = sut.GetById(tasktype.Id);
+
+            // Assert - Kiértékelünk.
+            afterupdate.Should().BeEquivalentTo(toUPdate);
+        }
+
+
+
 
 
         /// <summary>
@@ -81,8 +106,8 @@ namespace webdimension.Data.Tests
         public void TaskTypeRepositoryTests_ExistingTaskTypesShouldBeDelete()
         {
             // Arrange - előkészületek
-            var sut = new TaskTypeRepository();
-            var tasktype = new TaskType { Id = 1, Name="Test Tasktype"};
+            var sut = new TaskTypeRepository(fixture.GetNewWebdimensionContext());
+            var tasktype = new TaskType { Id = 1, Name = "Test Tasktype" };
             sut.Add(tasktype);
 
             // Act
