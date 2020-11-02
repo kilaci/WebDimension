@@ -11,7 +11,8 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.8"/>
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="3.1.8"/>
     <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="3.1.8"/>
-  </ItemGroup>    
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2"/>
+  </ItemGroup>
   <ItemGroup>
     <none Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

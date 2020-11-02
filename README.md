@@ -82,7 +82,7 @@ Az ASP.NET Core Indentity nagyon jó beépíthető elem, a kockázati tényező 
 ## és még
 - docker container fejlesztési környezet
 - visual studio code
- - Extensions - C#, C# Extensions, C# XML Documentation Comments
+ - Extensions - C#, C# Extensions, C# XML Documentation Comments, FluentAssertions, ToDo Tree
 
 
  ## Kódstruktúra
